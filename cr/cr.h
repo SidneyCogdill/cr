@@ -2059,7 +2059,7 @@ extern "C" void cr_plugin_close(cr_plugin &ctx) {
 
     // delete backups
     const auto file = p->fullname;
-    for (unsigned int i = 0; i < ctx.version; i++) {
+    for (unsigned int i = 1; i <= ctx.version; ++i) {
         cr_del(cr_version_path(file, i, p->temppath));
 #if defined(_MSC_VER)
         cr_del(cr_replace_extension(cr_version_path(file, i, p->temppath), ".pdb"));
